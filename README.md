@@ -1,2 +1,9 @@
-# InnovVentas_e-commerce
-Un chatbot implementado en un e-commerce que brinda asistencia automática a los usuarios, respondiendo consultas básicas y guiando en el proceso de compra para mejorar la experiencia del cliente.
+# InnovVentas
+
+#Inicializacion del proyecto
+npm create vite@latest carlos-gonzales-portfolioweb
+cd carlos-gonzales-portfolioweb
+npm install
+npm install -D tailwindcss@3.4.18 postcss autoprefixer
+npx tailwindcss init -p
+npm run dev
