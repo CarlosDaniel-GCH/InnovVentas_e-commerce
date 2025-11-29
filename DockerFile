@@ -1,0 +1,19 @@
+# Imagen base
+FROM node:20
+
+# Crear carpeta de la app
+WORKDIR /app
+
+# Copiar package.json e instalar dependencias
+COPY package*.json ./
+
+RUN npm install
+
+# Copiar el resto del proyecto
+COPY . .
+
+# Exponer puerto de Vite
+EXPOSE 5173
+
+# Comando para ejecutar el servidor de desarrollo
+CMD ["npm", "run", "dev", "--", "--host"]

@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Archivos de configuración de entorno y datos de prueba
+.env
+.env.*
+metrics.csv
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

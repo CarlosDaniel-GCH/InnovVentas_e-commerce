@@ -1,0 +1,37 @@
+services:
+  # --- 1. Servicio Backend (Python/API) ---
+  backend:
+    # El contexto es el directorio 'backend', donde están DockerFile y requirements.txt
+    build:
+      context: ./backend
+      dockerfile: DockerFile
+    container_name: chatbot_ecommerce_backend
+    # Mapea el puerto 8000 del contenedor al puerto 8000 de tu máquina
+    ports:
+      - "8000:8000"
+    # Montaje para desarrollo: mapea el contenido de la carpeta 'app'
+    # Esto permite que los cambios en app.py o chatbot_service.py se reflejen automáticamente.
+    volumes:
+      - ./backend/app:/app
+    # Usa el archivo .env para variables de entorno (como claves de API)
+    env_file:
+      - ./backend/.env
+
+  # --- 2. Servicio Frontend (Vite/React) ---
+  frontend:
+    # El contexto es la raíz del proyecto, donde están DockerFile y package.json
+    build:
+      context: .
+      dockerfile: DockerFile
+    container_name: chatbot_ecommerce_frontend
+    # Mapea el puerto 5173 del contenedor al puerto 5173 de tu máquina
+    ports:
+      - "5173:5173"
+    # Montaje para desarrollo con HMR (Hot Module Replacement)
+    # Excluye node_modules para evitar conflictos de sistema operativo.
+    volumes:
+      - .:/app
+      - /app/node_modules # Omite el mapeo para node_modules
+    # Se asegura que el backend esté listo antes de intentar iniciar el frontend
+    depends_on:
+      - backend
