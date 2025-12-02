@@ -1,6 +1,6 @@
 # InnovVentas: Chatbot de E-commerce con Google Gemini
 
-> Proyecto que implementa un asistente virtual de ventas para un e-commerce utilizando la tecnología de inteligencia artificial de Google Gemini y orquestado mediante Docker Compose.
+> Chatbot integrado en un e-commerce
 
 ---
 
